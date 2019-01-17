@@ -1,0 +1,37 @@
+<aura:component>
+	<aura:attribute name="ObjectType" type="Object"/>
+    <aura:attribute name="account" type="Account" 
+                    default="{ Name: 'Test Account', Type: 'Business', Phone: '+44 34522346' }"/>
+                    
+    <div class="c-container">
+        <c:Label_PicklistValues ObjectType="{! v.ObjectType}" sObjectTypeList="['Account','Contact']"/>
+    	<lightning:layout>
+            
+            <lightning:layoutItem padding="around-small">
+                <lightning:input aura:id="name" label="{!v.ObjectType.Account.Name.label}" type="text" value="{!v.account.Name}"/>
+            </lightning:layoutItem>
+            
+            <lightning:layoutItem padding="around-small">
+                <lightning:select aura:id="type" label="{!v.ObjectType.Account.Type.label}" value="{!v.account.Type}">
+               		<aura:iteration items="{!v.ObjectType.Account.Type.picklistOptions}" var="option">
+                        <option value="{!option.value}" text="{!option.label}"/>
+                    </aura:iteration>
+                </lightning:select>
+            </lightning:layoutItem>
+            
+        </lightning:layout>
+        
+         <lightning:layout>
+             
+            <lightning:layoutItem padding="around-small">
+                <lightning:input aura:id="phone" type="phone" label="{!v.ObjectType.Account.Phone.label}" value="{!v.account.Phone}"/>
+                {!v.ObjectType.Account.Phone.fieldType}
+             </lightning:layoutItem>
+             
+             <lightning:layoutItem padding="around-small">
+                <lightning:input aura:id="phone" type="phone" label="{!v.ObjectType.Contact.Email.label}"/>
+             </lightning:layoutItem>
+            
+        </lightning:layout>
+    </div>
+</aura:component>
