@@ -1,0 +1,3 @@
+<aura:application extends="force:slds">
+    <c:Label_PicklistValuesTest />
+</aura:application>
